@@ -15,6 +15,7 @@
                             <th style="text-align: center">
                                 select
                             </th>
+                            <th style="text-align: center">File Preview</th>
                             <th style="text-align: center">File Name</th>
                             <th style="text-align: center">File Type</th>
                             <th style="text-align: center">Download</th>
@@ -27,6 +28,7 @@
                                     <td style="text-align: center">
                                         <input name="{{ $checkName }}" type="checkbox" value="{{ $doc->id or 'N/A' }} ">
                                     </td>
+                                    <td style="text-align: center"><img width="75px" height="100px" src="{{ asset('pdf-images/'.basename($doc->document_name,'.'.strtolower(substr($doc->document_name, strrpos($doc->document_name, '.') + 1))).'.png') }}" alt="no preiview"></td>
                                     <td style="text-align: center">{{ $doc->document_name or 'N/A' }}</td>
                                     <td style="text-align: center">
 

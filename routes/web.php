@@ -12,6 +12,9 @@
 */
 
 Route::get('/', ['as'=>'index',function () {
+
+
+        dd(phpinfo());
         return view('frontend.index');
     }]
 );

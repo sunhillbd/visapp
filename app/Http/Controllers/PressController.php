@@ -7,6 +7,8 @@ use App\Press;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use ImalH\PDFLib\PDFLib;
+use Spatie\PdfToImage\Pdf;
 
 class PressController extends Controller
 {
@@ -24,6 +26,8 @@ class PressController extends Controller
     public function create(Press $press, Document $document)
     {
 
+
+
         $authUser = auth()->user();
 
         /*$pressWithDocs = $press->whereHas('documents', function ($query) use($authUser) {
@@ -37,49 +41,57 @@ class PressController extends Controller
 //dd($documents);
         return view('frontend.dashboard.press.create',compact('pressWithDocs','documents'));
     }
+    private function fileNameWithoutExtension($fileName)
+    {
+        $ext = strtolower(substr($fileName, strrpos($fileName, '.') + 1));
+        $fileNameWithoutExt =  basename($fileName,'.'.$ext); // output: "youFileName" only
 
+        return $fileNameWithoutExt;
+    }
 
     public function store(Request $request)
     {
 
-
-//dd($request->has('check_article'));
-//dd($request->check_article);
         DB::transaction(function () use($request) {
 
             $press = new Press();
-            $press->user_id = auth()->user()->id;
-            $press->article_title = $request->has('article_title')?$request->article_title:null;
-            $press->publication_name = $request->has('publication_name')? $request->publication_name:null;
-            $press->when_published =$request->has('publication_time')? $request->publication_time:null;
-            $press->author_name = $request->has('article_author')?$request->article_author:$request->article_author;
-            $press->is_confirm = false;
-            $press->is_reviewed = false;
-            $press->is_in_english = $request->has('article_in_english')?$request->article_in_english == 'yes':true;
-            $press->article_translation_back_later = $request->has('article_translation_back_later');
-            $press->publication_back_later = $request->has('publication_back_later');
-            $press->publication_translation_back_later = $request->has('publication_translation_back_later');
-            $press->article_type = ARTICLE_DOC;
+            $press->user_id                             = auth()->user()->id;
+            $press->article_title                       = $request->has('article_title')?$request->article_title:null;
+            $press->publication_name                    = $request->has('publication_name')? $request->publication_name:null;
+            $press->when_published                      = $request->has('publication_time')? $request->publication_time:null;
+            $press->author_name                         = $request->has('article_author')?$request->article_author:$request->article_author;
+            $press->is_confirm                          = false;
+            $press->is_reviewed                         = false;
+            $press->is_in_english                       = $request->has('article_in_english')?$request->article_in_english == 'yes':true;
+            $press->article_translation_back_later      = $request->has('article_translation_back_later');
+            $press->publication_back_later              = $request->has('publication_back_later');
+            $press->publication_translation_back_later  = $request->has('publication_translation_back_later');
+            $press->article_type                        = ARTICLE_DOC;
 
             $press->save();
-
 
             if ($request->hasFile('article')) {
 
                 foreach ($request->article as $docType => $doc) {
+                    $docType                    = $docType;
+                    $document                   = null;
+                    $pdf                        = null;
+                    $documentName               = time().str_random(4).$doc->getClientOriginalName();
+                    $doc->move(public_path('uploads'),$documentName);
 
-                        $docType = $docType;
-                        $document = null;
-                        $documentName = time().str_random(4).$doc->getClientOriginalName();
-                        $doc->move(public_path('uploads'),$documentName);
-                        $document = new Document();
-                        $document->user_id = auth()->user()->id;
-                        $document->document_name = $documentName;
+                    if(file_exists(public_path('uploads/'.$documentName))){
+                        $pdf = new Pdf(public_path('/uploads/'.$documentName));
+                        $pdf->saveImage(public_path('pdf-images/'.$this->fileNameWithoutExtension($documentName).'.png'));
+                    }
 
-                        $press->documents()->save($document,[
-                            'user_id'=>auth()->user()->id,
-                            'document_type'=>$docType
-                        ]);
+                    $document                   = new Document();
+                    $document->user_id          = auth()->user()->id;
+                    $document->document_name    = $documentName;
+
+                    $press->documents()->save($document,[
+                        'user_id'=>auth()->user()->id,
+                        'document_type'=>$docType
+                    ]);
 
                 }
             }
@@ -87,11 +99,10 @@ class PressController extends Controller
             if($request->has('check_article')){
 
                 foreach($request->check_article as $docType=>$checkArticle){
-
                     foreach ($checkArticle  as $docId) {
-                        $newDoc = null;
-                        $newDoc = new Document();
-                        $documentToAddForCategory = $newDoc->find($docId);
+                        $newDoc                     = null;
+                        $newDoc                     = new Document();
+                        $documentToAddForCategory   = $newDoc->find($docId);
                         $press->documents()->save($documentToAddForCategory,[
                             'user_id' => auth()->user()->id,
                             'document_type'=>$docType
@@ -106,17 +117,17 @@ class PressController extends Controller
 
             $pressArtwork = new Press();
 
-            $pressArtwork->user_id = auth()->user()->id;
-            $pressArtwork->article_title = $request->has('artwork_article_title')?$request->artwork_article_title:null;
-            $pressArtwork->publication_name = $request->has('artwork_publication_name')? $request->artwork_publication_name:null;
-            $pressArtwork->when_published =$request->has('artwork_publication_time')? $request->artwork_publication_time:null;
-            $pressArtwork->is_confirm = false;
-            $pressArtwork->is_reviewed = false;
-            $pressArtwork->is_in_english = $request->has('artwork_article_in_english')?$request->artwork_article_in_english == 'yes':true;
-            $pressArtwork->article_translation_back_later = $request->has('artwork_article_translation_back_later');
-            $pressArtwork->publication_back_later = $request->has('artwork_publication_back_later');
-            $pressArtwork->publication_translation_back_later = $request->has('artwork_publication_translation_back_later');
-            $pressArtwork->article_type = ARTWORK_ARTICLE_DOC;
+            $pressArtwork->user_id                              = auth()->user()->id;
+            $pressArtwork->article_title                        = $request->has('artwork_article_title')?$request->artwork_article_title:null;
+            $pressArtwork->publication_name                     = $request->has('artwork_publication_name')? $request->artwork_publication_name:null;
+            $pressArtwork->when_published                       = $request->has('artwork_publication_time')? $request->artwork_publication_time:null;
+            $pressArtwork->is_confirm                           = false;
+            $pressArtwork->is_reviewed                          = false;
+            $pressArtwork->is_in_english                        = $request->has('artwork_article_in_english')?$request->artwork_article_in_english == 'yes':true;
+            $pressArtwork->article_translation_back_later       = $request->has('artwork_article_translation_back_later');
+            $pressArtwork->publication_back_later               = $request->has('artwork_publication_back_later');
+            $pressArtwork->publication_translation_back_later   = $request->has('artwork_publication_translation_back_later');
+            $pressArtwork->article_type                         = ARTWORK_ARTICLE_DOC;
 
 
 
@@ -127,11 +138,16 @@ class PressController extends Controller
                 foreach ($request->artwork as $docType => $doc) {
 
                     $docType = $docType;
-                    $artworkDocument = null;
-                    $documentName = time().str_random(4).$doc->getClientOriginalName();
+                    $artworkDocument                = null;
+                    $pdf                            = null;
+                    $documentName                   = time().str_random(4).$doc->getClientOriginalName();
                     $doc->move(public_path('uploads'),$documentName);
-                    $artworkDocument = new Document();
-                    $artworkDocument->user_id = auth()->user()->id;
+                    if(file_exists(public_path('uploads/'.$documentName))){
+                        $pdf = new Pdf(public_path('/uploads/'.$documentName));
+                        $pdf->saveImage(public_path('pdf-images/'.$this->fileNameWithoutExtension($documentName).'.png'));
+                    }
+                    $artworkDocument                = new Document();
+                    $artworkDocument->user_id       = auth()->user()->id;
                     $artworkDocument->document_name = $documentName;
 
                     $pressArtwork->documents()->save($artworkDocument,[
