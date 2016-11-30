@@ -13,8 +13,6 @@
 
 Route::get('/', ['as'=>'index',function () {
 
-
-        dd(phpinfo());
         return view('frontend.index');
     }]
 );
@@ -45,8 +43,10 @@ Route::get('dashboard/settings',['as'=>'dashboard.settings','uses'=>'DashboardCo
 //Route::resource('press/{id}/update',['as'=>'press.update','uses'=>'PressController']);
 Route::resource('press','PressController');
 
-//Route::post('questionnare/submit',['as'=>'questionnare.submit','uses'=>'QuestionnareController@store']);
+Route::resource('leading_role','LeadingRoleController');
+Route::resource('major_significance','MajorSignificanceController');
+Route::resource('critical_role','CriticalRoleController');
+Route::resource('high_compensation','HighCompensationController');
+Route::resource('major_commercial_success','MajorCommercialSuccess');
 
-//Auth::routes();
 
-//Route::get('/home', 'HomeController@index');

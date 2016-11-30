@@ -49,8 +49,12 @@
                                                     <td> Pending</td>
                                                     <td>
 
-                                                        <a class="btn-xs btn-success" href="{{ route('dashboard.view',$formCategory->name) }} ">
+                                                        <a class="btn-xs btn-success" href="{{ Route::has('dashboard.view')? route('dashboard.view',$formCategory->name):url('/#') }} ">
                                                             details
+                                                        </a>
+                                                        &nbsp;
+                                                        <a class="btn-xs btn-success" href="{{ Route::has($formCategory->name.'.create')? route($formCategory->name.'.create'):url('/#') }} ">
+                                                              add new
                                                         </a>
 
                                                     </td>

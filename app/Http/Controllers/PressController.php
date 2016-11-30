@@ -30,15 +30,11 @@ class PressController extends Controller
 
         $authUser = auth()->user();
 
-        /*$pressWithDocs = $press->whereHas('documents', function ($query) use($authUser) {
-            $query->where('documentals.user_id', '=',$authUser->id );
-        })->get();*/
-
         $documents = $document->whereHas('documentals', function ($query) use($authUser) {
             $query->where('documentals.user_id', '=',$authUser->id );
         })->with('documentals')->get();
 
-//dd($documents);
+
         return view('frontend.dashboard.press.create',compact('pressWithDocs','documents'));
     }
     private function fileNameWithoutExtension($fileName)

@@ -14,7 +14,7 @@ class DashboardController extends Controller
 
 
         $formCategories = auth()->user()->formCategories()->get();
-
+//dd($formCategories);
         return view('frontend.dashboard.index',compact('formCategories'));
     }
 

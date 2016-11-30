@@ -4,7 +4,7 @@
 @section('styles')
     <link href="{{ asset('assets/plugins/dropzone/css/dropzone.css') }}" type="text/css" rel="stylesheet">
         {!! Html::style('css/bootstrap-datepicker.min.css') !!}
-{{--    {!! Html::style('css/datatable.min.css') !!}--}}
+
 
 
 @endsection
@@ -148,8 +148,6 @@ $(function() {
 
     $(document).ready(function(){
 
-
-{{--        {!! Html::script('js/datatable.min.js') !!}--}}
 
                    $('#when_published').datepicker({
 
