@@ -9,7 +9,7 @@
                 </div>
 
                 <div class="row">
-                    {!! Form::select(isset($name)?$name:'no_name',[''=>'Select'] + $selectValues,
+                    {!! Form::select(isset($name)?$name:'no_name', $selectValues,
                                 isset($value)?$value:null,$attributes) !!}
 
                     @if ($errors->has(isset($name)?$name:'no_name'))

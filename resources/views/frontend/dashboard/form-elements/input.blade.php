@@ -1,11 +1,11 @@
-<div class="row">
+<div class="row" id="{{ isset($rowId)?$rowId:'' }}" style="{{ isset($rowStyle)?$rowStyle:'' }}">
     <div class="col-md-12">
         <div class="form-group{{ $errors->has(isset($name)?$name:'no_name') ? ' has-error' : '' }}">
 
             <div class="col-md-2 "></div>
             <div class="col-md-8">
                 <div class="row">
-                    <label for="name" class="pull-left">{{ isset($question)?$question:'Question Not Available' }}</label>
+                    <label for="name" id="{{ isset($leabelId)?$leabelId:null }}" class="{{ isset($labelClass)?$labelClass:null }}">{{ isset($question)?$question:'Question Not Available' }}</label>
                 </div>
 
                 <div class="row">

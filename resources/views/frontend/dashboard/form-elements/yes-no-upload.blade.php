@@ -19,7 +19,7 @@
 </div>
 
 
-<div class="form-group uploadtranslationbox2" id="publication_upload_english" style="display: none;">
+<div class="form-group uploadtranslationbox2" id={{ isset($yesNoUploadDivId)?$yesNoUploadDivId:'' }} style="{{ isset($yesNoUploadStyle)?$yesNoUploadStyle:'' }}">
     @if(isset($documents) && !$documents->isEmpty())
 
         @include('frontend.dashboard.partials.upload-modal',isset($uploadSelectIncludeAttr)?$uploadSelectIncludeAttr:[])
