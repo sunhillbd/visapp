@@ -5,7 +5,7 @@
             <div class="panel-heading"> {{ $panelTitle }}</div>
             <div class="panel-body">
 
-                Text
+                {{ isset($panelBodyText)?$panelBodyText:'' }}
 
             </div>
         </div>

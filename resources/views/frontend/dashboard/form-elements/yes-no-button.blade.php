@@ -9,8 +9,8 @@
                 </div>
 
                 <div class="row">
-                    {!! Form::submit('yes',['class'=>'btn btn-success']) !!}
-                    {!! Form::button('no',['class'=>'btn btn-warning']) !!}
+                    {!! Form::$yesButtonType('yes',isset($yesBtnAttr)?$yesBtnAttr:[]) !!}
+                    {!! Form::$noButtonType('no',isset($noBtnAttr)?$noBtnAttr:[]) !!}
 
 
                 </div>

@@ -8,7 +8,7 @@
                     <label for="name" id="{{ isset($leabelId)?$leabelId:null }}" class="{{ isset($labelClass)?$labelClass:null }}">{{ isset($question)?$question:'Question Not Available' }}</label>
                 </div>
 
-                <div class="row">
+                <div class="row" style="{{ isset($inputDivStyle)?$inputDivStyle:'' }}">
                     {!! Form::$type(isset($name)?$name:'no_name',
                                 isset($value)?$value:null,$attributes) !!}
 
