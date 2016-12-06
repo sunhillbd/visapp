@@ -1709,7 +1709,7 @@ only screen and (        min-device-pixel-ratio: 2),
 only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) {
 
-	#logo a.standard-logo { display: block; }
+	#logo a.standard-logo { display: none; }
 	#logo a.retina-logo { display: block; }
 
 	.owl-carousel.owl-loading,
@@ -1764,6 +1764,7 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) and (max-width: 991px),
 only screen and (        min-device-pixel-ratio: 2) and (max-width: 991px),
 only screen and (                min-resolution: 192dpi) and (max-width: 991px),
 only screen and (                min-resolution: 2dppx) and (max-width: 991px) {
-	#logo a.standard-logo { display: block; position: relative; left: calc(50% - 64px); }
+	#logo a.standard-logo { display: none; }
 	#logo a.retina-logo { display: inline-block; }
 }
+

@@ -47,7 +47,7 @@
             color: #5f7676;
         }
     </style>
-
+    
 <link href="assets/plugins/form-daterangepicker/daterangepicker-bs3.css" type="text/css" rel="stylesheet">    	<!-- DateRangePicker -->
 <link href="assets/plugins/switchery/switchery.css" type="text/css" rel="stylesheet">        					<!-- Switchery -->
 <link href="assets/plugins/fullcalendar/fullcalendar.css" type="text/css" rel="stylesheet"> 						<!-- FullCalendar -->
@@ -55,56 +55,42 @@
     </head>
 
     <body class="infobar-offcanvas">
-
-            <header id="topnav" class="navbar navbar-inverse navbar-fixed-top clearfix" role="banner">
-                <a href="{{ route('index') }}"><img src="{{ asset('images/logo.png') }}" alt="ESE Law Logo" class="logo"></a>
-                <ul class="nav navbar-nav toolbar pull-right topnav" id="myTopnav">
-                    <li class="icon"><a href="javascript:void(0);" onclick="myFunction()">&#9776;</a></li>
-                    <li><a href="how-it-works.html">How It Works</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-
-                    @if(!is_null(auth()->user()))
-                        <li><a href="">Profile</a></li>
-                        <li class="dropdown">
-                              <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">More<span class="caret"></span></a>
-                              <ul class="dropdown-menu" role="menu">
-                                      <li><a href={{ route('auth.logout') }}>Logout</a></li>
-                                      <li><a  href="{{ route('dashboard.settings') }}"><i class="fa fa-cogs"></i></a> </li>
-                              </ul>
-                        </li>
-                    @else
-                        <li><a href="{{ route('register') }}">Sign-Up</a></li>
-                        <li><a href={{ route('auth.login') }}>Login</a></li>
-                    @endif
-
-                </ul>
-            </header>
+        
+        <header id="topnav" class="navbar navbar-inverse navbar-fixed-top clearfix" role="banner">
+        	<a href="{{ route('index') }}"><img src="images/logo-dark.png" alt="ESE Law Logo" class="logo"></a>
+        	<ul class="nav navbar-nav toolbar pull-right topnav" id="myTopnav">
+                <li class="icon"><a href="javascript:void(0);" onclick="myFunction()">&#9776;</a></li>
+                <li><a href="how-it-works.html">How It Works</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="{{ route('register') }}">Sign-Up</a></li>
+                <li><a href="{{ route('auth.login') }}">Login </a></li>
+            </ul>
+		</header>
 
         <div id="wrapper">
             <div id="layout-static">
                 <div class="static-sidebar-wrapper sidebar-default">
                     <div class="static-sidebar">
                         <div class="sidebar">
-        			<div class="widget stay-on-collapse" id="widget-sidebar">
-        				<nav role="navigation" class="widget-body">
-                                                <ul class="acc-menu">
-        						<li><a href="dashboard.html"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
-                                                        <li><a href="javascript:;"><i class="fa fa-pencil"></i><span>Forms</span></a>
-        							<ul class="acc-menu">
-        								<li><a href="{{ route('dashboard') }}">Press</a></li>
-        								<li><a href="#">Leading role</a></li>
-        								<li><a href="#">Major significance</a></li>
-        								<li><a href="#">Critical role</a></li>
-        								<li><a href="#">High compensation</a></li>
-        								<li><a href="#">Major commercial success</a></li>
-        							</ul>
-                                                        </li>
-        					</ul>
-        				</nav>
-        			</div>
-        		</div>
+							<div class="widget stay-on-collapse" id="widget-sidebar">
+								{{--<nav role="navigation" class="widget-body">--}}
+									{{--<ul class="acc-menu">--}}
+										{{--<li><a href="dashboard.html"><i class="fa fa-home"></i><span>Dashboard</span></a></li>--}}
+                                        {{--<li><a href="javascript:;"><i class="fa fa-pencil"></i><span>Forms</span></a>--}}
+											{{--<ul class="acc-menu">--}}
+												{{--<li><a href="press.html">Press</a></li>--}}
+												{{--<li><a href="#">Leading role</a></li>--}}
+												{{--<li><a href="#">Major significance</a></li>--}}
+												{{--<li><a href="#">Critical role</a></li>--}}
+												{{--<li><a href="#">High compensation</a></li>--}}
+												{{--<li><a href="#">Major commercial success</a></li>--}}
+											{{--</ul>--}}
+										{{--</li>--}}
+									{{--</ul>--}}
+								{{--</nav>--}}
+							</div>
+						</div>
                     </div>
                 </div>
                 <div class="static-content-wrapper">
@@ -201,11 +187,11 @@
 <script src="assets/demo/demo.js"></script>
 <script src="assets/demo/demo-switcher.js"></script>
 
-<script src="assets/plugins/simpleWeather/jquery.simpleWeather.min.js"></script>
+<script src="assets/plugins/simpleWeather/jquery.simpleWeather.min.js"></script> 
 <script src="assets/js/responsivenav.js"></script>
 
 <!-- End loading site level scripts -->
-
+    
 <!-- Load page level scripts-->
 
 <!-- End loading page level scripts-->

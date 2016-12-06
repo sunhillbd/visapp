@@ -6425,7 +6425,7 @@ i.visible-print {
 }
 .sidebar-default nav.widget-body > ul.acc-menu li a {
   color: #5f7676;
-  background: transparent;
+  background: #eee;
   border-top: 1px solid #e3e8eb;
 }
 .sidebar-default nav.widget-body > ul.acc-menu > li:hover > a {
@@ -9197,7 +9197,7 @@ i.visible-print {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RjJEREE0NzVFMEIyMTFFM0E2QzREMDM5Q0QyOTI5QzEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RjJEREE0NzZFMEIyMTFFM0E2QzREMDM5Q0QyOTI5QzEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGMkREQTQ3M0UwQjIxMUUzQTZDNEQwMzlDRDI5MjlDMSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpGMkREQTQ3NEUwQjIxMUUzQTZDNEQwMzlDRDI5MjlDMSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Ppm9f9oAAAD7SURBVHja7NxRCoMwEEVRI+7VNbnauAF/AiHzIud+l8J4ygyF0tZ7P5TT6REAERAgAgJEQIAICBABERAgAgJEQIAICBCldE16n2fgtfdmz2jpbM2PHKwsAXFDRku5K+VzuCFWloC4Ib/4PlIykxtiZQkIEAEBIiBABASIgAgIEAEBIiBABASIgAgIEAEBIiBABASIgAgIEAEBIiBABASIgAgIEAHZuFn/5DDy7wNts2e0dLZZIO3HH9qls1lZbojSbkjyyiufww0Jm8PKckOUekPS11zJTG5I2ExWlhsiIEAEBIiAABEQIAIiIEAEBIiAABEQIAKi714BBgCTKxjRt20bWAAAAABJRU5ErkJggg==);
 }
 #topnav.navbar-inverse {
-  background-color: transparent;
+  background-color: #000;
   border-color: #485a5a;
 }
 #topnav.navbar-inverse .navbar-brand {
@@ -9229,17 +9229,17 @@ i.visible-print {
   border-bottom: 1px solid #3d4c4c;
 }
 #topnav.navbar-inverse .navbar-nav > li > a {
-  color: #555;
+  color: #fff;
 }
 #topnav.navbar-inverse .navbar-nav > li > a:hover,
 #topnav.navbar-inverse .navbar-nav > li > a:focus {
-  color: #1ABC9C;
+  color: #fff;
 }
 #topnav.navbar-inverse .navbar-nav > .active > a,
 #topnav.navbar-inverse .navbar-nav > .active > a:hover,
 #topnav.navbar-inverse .navbar-nav > .active > a:focus {
-  color: #1ABC9C;
-  background-color: transparent;
+  color: #cbd6d6;
+  background-color: #485a5a;
 }
 #topnav.navbar-inverse .navbar-nav > .disabled > a,
 #topnav.navbar-inverse .navbar-nav > .disabled > a:hover,
@@ -9917,7 +9917,7 @@ i.visible-print {
 /*!
  * Yamm!3
  * Yet another megamenu for Bootstrap 3
- *
+ * 
  * http://geedmo.github.com/yamm3
  */
 .yamm .nav,
@@ -27026,9 +27026,9 @@ ul#heatmap .gradient {
 /*
  * Default Layout Theme
  *
- * Created for jquery.layout
+ * Created for jquery.layout 
  *
- * Copyright (c) 2010
+ * Copyright (c) 2010 
  *   Fabrizio Balliano (http://www.fabrizioballiano.net)
  *   Kevin Dalman (http://allpro.net)
  *
@@ -27142,7 +27142,7 @@ ul#heatmap .gradient {
   filter: alpha(opacity=100);
   /* on-hover, show the resizer-bar normally */
 }
-/* sliding resizer - add 'outside-border' to resizer on-hover
+/* sliding resizer - add 'outside-border' to resizer on-hover 
 		 * this sample illustrates how to target specific panes and states */
 .ui-layout-resizer-north-sliding-hover {
   border-bottom-width: 1px;
@@ -27200,7 +27200,7 @@ ul#heatmap .gradient {
 }
 /*
  *	PANE-MASKS
- *	these styles are hard-coded on mask elems, but are also
+ *	these styles are hard-coded on mask elems, but are also 
  *	included here as !important to ensure will overrides any generic styles
  */
 .ui-layout-mask {

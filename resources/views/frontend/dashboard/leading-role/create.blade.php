@@ -234,17 +234,7 @@
     'noBtnAttr'=>['class'=>'btn btn-warning','id'=>'press-coverage-no','style'=>'display:none']
     ])
 
-   {{-- @include(
-                       'frontend.dashboard.form-elements.select',
-                       [
 
-                           'name'=>'lr_press_about_venue',
-                           'selectValues'=> ['yes'=>'Yes','no'=>'No'],
-                           'value'=>null,
-                           'question'=>'If #titleOfEventProduction is an event: is there press about the venue at which it took place? It doesn\'t have to mention you or #titelProductionEvent. (if yes, branch C=press; if no , information about the venue)',
-                           'attributes'=>['class'=>'form-control yes-no-select', 'autofocus','id'=>'press-about-venue','style'=>'display:block']
-                       ]
-               )--}}
 
 
         @include('frontend.dashboard.form-elements.yes-no-button',[
@@ -254,18 +244,7 @@
     'yesBtnAttr'=>['class'=>'btn btn-success','id'=>'press-about-venue-yes'],
     'noBtnAttr'=>['class'=>'btn btn-warning','id'=>'press-about-venue-no','style'=>'display:none']
      ])
-{{--
-    @include(
-                      'frontend.dashboard.form-elements.select',
-                      [
 
-                          'name'=>'lr_info_about_venue',
-                          'selectValues'=> ['yes'=>'Yes','no'=>'No'],
-                          'value'=>null,
-                          'question'=>'If #titleOfEventProduction is an event: do you have any information about the venue at which it took place? This is typically a screenshot of the About Section of the venue\'s website.',
-                          'attributes'=>['class'=>'form-control yes-no-select', 'autofocus','id'=>'info-about-venue','style'=>'display:block']
-                      ]
-              )--}}
 
     @include(
                     'frontend.dashboard.form-elements.input',
@@ -332,17 +311,7 @@
 
         {!! Form::close() !!}
 
-    {{--{!! Form::open() !!}
 
-    @include('frontend.dashboard.form-elements.yes-no-button',[
-     'yesButtonType'=>'submit',
-     'noButtonType'=>'button',
-     'question'=>'Congrats!!! you have reached the end of this category',
-     'yesBtnAttr'=>['class'=>'btn btn-success','id'=>'press-about-venue-yes'],
-     'noBtnAttr'=>['class'=>'btn btn-warning','id'=>'press-about-venue-no','style'=>'display:none']
- ])
-    {!! Form::close() !!}
---}}
 
 @endsection
 

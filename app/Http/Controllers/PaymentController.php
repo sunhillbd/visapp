@@ -53,7 +53,6 @@ class PaymentController extends Controller
         DB::transaction(function()use($user,$token,$plan,$formCategory){
 
             $this->chargeUser($user,$token,$plan);
-            dd( $this->chargeUser($user,$token,$plan));
             $user->update([
                 'plan_id'=>$plan->id,
                 'coupon_code'=>$user->coupon_code,

@@ -28,12 +28,7 @@
 
 
                         @if(!is_null(auth()->user()))
-                        <li><a href="javascript:void(0)"><div>More</div></a>
-                                <ul>
-                                        <li><a href="#">Profile</a></li>
-                                        <li><a href={{ route('auth.logout') }}>Logout</a></li>
-                                </ul>
-                        </li>
+                            <li><a href={{ route('auth.logout') }}>Logout</a></li>
 
                         @else
                             <li><a href="{{ route('register') }}">Sign-Up</a></li>
