@@ -122,82 +122,95 @@
 
     <br>
 
-    @include('frontend.dashboard.partials.panel-row',['panelTitle'=>'Add Evidence of Your Involvement','panelBodyText'=>'Text'])
+    <div id="evidence-of-involvement">
+
+        @include('frontend.dashboard.partials.panel-row',['panelTitle'=>'Add Evidence of Your Involvement','panelBodyText'=>'Text'])
+
+       <div class="step">
+
+           @include(
+                            'frontend.dashboard.form-elements.select',
+                            [
+
+                                'name'=>' ',
+                                'selectValues'=>isset($documentKinds) && !$documentKinds->isEmpty() ? $documentKinds:[],
+                                'value'=>null,
+                                'question'=>'What kind of document is this?',
+                                'attributes'=>['class'=>'form-control', 'autofocus','id'=>'document_type']
+                            ]
+               )
+           <br>
+           @include(
+                                'frontend.dashboard.form-elements.input',
+                                [
+                                    'type'=>'text',
+                                    'name'=>'',
+                                    'value'=>null,
+                                    'question'=>'Other Document Type',
+                                    'leabelId'=>'label_year_event_production',
+                                    'labelClass'=>'label_title',
+                                    'rowId'=>'row_other_document_type',
+                                    'rowStyle'=>'display:none',
+                                    'attributes'=>['class'=>'form-control', 'autofocus','id'=>'other_document_type']
+                                ]
+                        )
 
 
-    @include(
-                         'frontend.dashboard.form-elements.select',
-                         [
+           @include('frontend.dashboard.partials.upload-modal-media-library',
+                             [
+                                     'uploadModalMedia'=>[
+                                                              'fileUploadName'=>'article[doc_publication_translation]',
+                                                               'uploadModal'=>'up-article-publication-trans',
+                                                               'checkName'=>'check_article[doc_publication_translation][]'
+                                                          ],
+                                     'uploadModalMediaFileName'=>'',
+                                     'modalMediaFileId'=>'',
+                                     'modalMediaCheckName'=>'',
+                                     'modalMediaCheckId'=>'',
+                                     'modalMediaCheckValue'=>'',
+                             ])
 
-                             'name'=>'event_type',
-                             'selectValues'=>isset($documentKinds) && !$documentKinds->isEmpty() ? $documentKinds:[],
-                             'value'=>null,
-                             'question'=>'What kind of document is this?',
-                             'attributes'=>['class'=>'form-control', 'autofocus']
-                         ]
-            )
-    <br>
+           <br>
 
+           @include('frontend.dashboard.form-elements.yes-no-upload',
+                           [
 
- @include('frontend.dashboard.partials.upload-modal-media-library',
-                   [
-                           'uploadModalMedia'=>[
-                                                    'fileUploadName'=>'article[doc_publication_translation]',
-                                                     'uploadModal'=>'up-article-publication-trans',
-                                                     'checkName'=>'check_article[doc_publication_translation][]'
-                                                ],
-                           'uploadModalMediaFileName'=>'',
-                           'modalMediaFileId'=>'',
-                           'modalMediaCheckName'=>'',
-                           'modalMediaCheckId'=>'',
-                           'modalMediaCheckValue'=>'',
-                   ])
+                                   'uploadQuestion'=>'Is this document in english?',
+                                   'yesNoUploadDivId'=>'lr_yes_no_div_trans',
+                                   'yesNoSelectName'=>'choose_upload',
+                                   'yesNoUploadStyle'=>'display:none',
+                                   'yesNoSelectAttributes'=>['class'=>'form-control','id'=>'lr_yes_no_trans'],
 
-    <br>
-
-   @include('frontend.dashboard.form-elements.yes-no-upload',
-                   [
-
-                           'uploadQuestion'=>'Is this document in english?',
-                           'yesNoUploadDivId'=>'lr_yes_no_div_trans',
-                           'yesNoSelectName'=>'choose_upload',
-                           'yesNoUploadStyle'=>'display:none',
-                           'yesNoSelectAttributes'=>['class'=>'form-control','id'=>'lr_yes_no_trans'],
-
-                           'uploadSelectIncludeAttr'=> [
-                                                        'fileUploadName'=>'article[doc_publication_translation]',
-                                                        'uploadModal'=>'up-article-publication-trans',
-                                                        'checkName'=>'check_article[doc_publication_translation][]'
-                                                        ],
-                           'uploadCheckName'=>'upload_check_name',
-                           'uploadCheckValue'=>'yes',
-                           'checkTrueOrFalse'=>false,
-                           'uploadCheckAttr'=>['class'=>'form-control'],
-                           'uploadTitle'=>'Upload your file',
-                           'fileInputName'=>'file_input',
-                           'fileInputAttr'=>['class'=>'form-control']
+                                   'uploadSelectIncludeAttr'=> [
+                                                                'fileUploadName'=>'article[doc_publication_translation]',
+                                                                'uploadModal'=>'up-article-publication-trans',
+                                                                'checkName'=>'check_article[doc_publication_translation][]'
+                                                                ],
+                                   'uploadCheckName'=>'upload_check_name',
+                                   'uploadCheckValue'=>'yes',
+                                   'checkTrueOrFalse'=>false,
+                                   'uploadCheckAttr'=>['class'=>'form-control'],
+                                   'uploadTitle'=>'Upload your file',
+                                   'fileInputName'=>'file_input',
+                                   'fileInputAttr'=>['class'=>'form-control']
 
 
-                   ])
-    <br>
-   {{-- @include(
-                    'frontend.dashboard.form-elements.select',
-                    [
+                           ])
+           <br>
 
-                        'name'=>'lr_additional_evidence',
-                        'selectValues'=> ['yes'=>'Yes','no'=>'No'],
-                        'value'=>null,
-                        'question'=>'Do you have additional evidence of your involvement in #titleOfProductionOrEvent.(yes/add evidence of your involvement; no/evidence about distinguished reputation)',
-                        'attributes'=>['class'=>'form-control yes-no-select', 'autofocus','id'=>'additional-evidence','style'=>'display:block']
-                    ]
-            )--}}
-    @include('frontend.dashboard.form-elements.yes-no-button',[
-    'yesButtonType'=>'button',
-       'noButtonType'=>'button',
-    'question'=>'Do you have additional evidence of your involvement in #titleOfProductionOrEvent.(yes/add evidence of your involvement; no/evidence about distinguished reputation)',
-    'yesBtnAttr'=>['class'=>'btn btn-success','id'=>'additional-evidence-yes'],
-    'noBtnAttr'=>['class'=>'btn btn-warning','id'=>'additional-evidence-no','style'=>'display:none']
-    ])
+           @include('frontend.dashboard.form-elements.yes-no-button',[
+           'yesButtonType'=>'button',
+              'noButtonType'=>'button',
+           'question'=>'Do you have additional evidence of your involvement in #titleOfProductionOrEvent.(yes/add evidence of your involvement; no/evidence about distinguished reputation)',
+           'yesBtnAttr'=>['class'=>'action next btn btn-info btn-success','id'=>'additional-evidence-yes'],
+           'noBtnAttr'=>['class'=>'btn btn-warning','id'=>'additional-evidence-no','style'=>'display:none']
+           ])
+
+       </div>
+
+
+
+    </div>
 
     @include('frontend.dashboard.partials.panel-row',['panelTitle'=>'Add Evidence about Distinguished Reputation','panelBodyText'=>'Text'])
 
@@ -406,6 +419,16 @@
                 }else{
                     $('#lr_yes_no_div_venu_info_trans').show()
                 }
+            }).trigger('change');
+
+            $('#document_type').bind('change', function(){
+                var documentType = $('#document_type option:selected').text();
+                if(documentType=='Other'){
+                      $('#row_other_document_type').show();
+                }else{
+                    $('#row_other_document_type').hide();
+                }
+
             }).trigger('change');
 
 

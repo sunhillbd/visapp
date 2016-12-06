@@ -30,7 +30,7 @@ class AddColumnsToPresses extends Migration
         Schema::table('presses', function (Blueprint $table) {
            $table->dropColumn('article_translation_back_later');
            $table->dropColumn('publication_back_later');
-           $table->dropColumn('publication_back_later');
+           $table->dropColumn('publication_translation_back_later');
         });
     }
 }

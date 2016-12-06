@@ -110,7 +110,7 @@ class RegisterController extends Controller
             if ($user->save()) {
                 Auth::login($user);
             }
-            Mail::to($user)->send(new EmailVerification($user));
+//            Mail::to($user)->send(new EmailVerification($user));
         });
 
         return redirect(route('payment'))->withSuccess('Congrats!!! Your registration is done. One more step to go. Please, choose your package and pay accordingly to have a journey with us. Best of Luck ...');
